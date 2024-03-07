@@ -1,8 +1,91 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<Pokemon>
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bem Vindo Programador</h1>
-    
+<section class="pt-5 pb-3 text-center container">
+    <div class="row">
+        <div class="col mx-auto">
+            <h1>Pokédex</h1>
+            <div class="group">
+                <button id="btn-all" class="btn btn-md my-2 text-white bg-secondary btn-filter">Ver
+                    Todos</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#aab">Aço</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#39f">Água</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#76e">Dragão</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#fc3">Elétrico</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#e9e">Fada</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#66b">Fantasma</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#f42">Fogo</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#6cf">Gelo</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#ab6">Inseto</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#b54">Lutador</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#aa9">Normal</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#ba6">Pedra</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#7c5">Planta</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#f59">Psíquico</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#754">Sombrio</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#db5">Terrestre</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#a59">Venenoso</button>
+                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color:#89f">Voador</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+            @foreach (var pokemon in Model)
+            {
+                // Card Pokemon - Inicio --
+                <div class="col">
+                    <div class="card shadow-sm cursor-pointer planta venenoso" @string.Join(' ', pokemon.Tipo) onclick="GetInfo(001)">
+                        <img src="@pokemon.Imagem" class="card-img-top" width="100%" height="300" alt="@pokemon.Nome" />
+                        <div class="card-body">
+                            <p class="card-text mb-0">Nº @pokemon.Numero.ToString("000")</p>
+                            <h3 class="card-title">@pokemon.Nome</h3>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    @foreach (var tipo in pokemon.Tipo)
+                                    {
+                                        <a href="#" class="btn my-2 text-white"
+                                         style="background-color:#7c5">@tipo</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Pokemon - Fim -->
+
+            }
+
+            <div id="zeroPokemon" class="col-lg-12 text-center" hidden>
+                <h1 class="my-3 text-danger">Nenhum Pokemon Encontrado</h1>
+            </div>
+        </div>
+
+
+    </div>
 </div>
